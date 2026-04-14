@@ -1,5 +1,5 @@
 diff --git a/node_modules/kenjitsu-extensions/dist/main.js b/node_modules/kenjitsu-extensions/dist/main.js
-index 0303d4b..3673ecc 100644
+index 0303d4b..5a585d9 100644
 --- a/node_modules/kenjitsu-extensions/dist/main.js
 +++ b/node_modules/kenjitsu-extensions/dist/main.js
 @@ -5638,6 +5638,14 @@ var Anilist = class extends BaseAnimeMeta {
@@ -8,7 +8,7 @@ index 0303d4b..3673ecc 100644
        const animepaheId = initialResponse.value.provider?.id;
 +      if (!animepaheId) {
 +        return {
-+          error: initialResponse.value.error || "Could not map anilist ID to animepahe provider",
++          error: initialResponse.value.error || "Could not map Anilist ID to Animepahe provider",
 +          data: anilistData || null,
 +          providerEpisodes: [],
 +          provider: null
