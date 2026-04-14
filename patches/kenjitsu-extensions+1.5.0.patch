@@ -1,0 +1,19 @@
+diff --git a/node_modules/kenjitsu-extensions/dist/main.js b/node_modules/kenjitsu-extensions/dist/main.js
+index 0303d4b..3673ecc 100644
+--- a/node_modules/kenjitsu-extensions/dist/main.js
++++ b/node_modules/kenjitsu-extensions/dist/main.js
+@@ -5638,6 +5638,14 @@ var Anilist = class extends BaseAnimeMeta {
+       }
+       const anilistData = initialResponse.value.data;
+       const animepaheId = initialResponse.value.provider?.id;
++      if (!animepaheId) {
++        return {
++          error: initialResponse.value.error || "Could not map anilist ID to animepahe provider",
++          data: anilistData || null,
++          providerEpisodes: [],
++          provider: null
++        };
++      }
+       const anizipEpisodes = anizip.value.episodes;
+       const animepahe = await this.animepahe.fetchEpisodes(animepaheId);
+       const animepaheNumbers = animepahe.data.map((e) => Number(e.episodeNumber));
