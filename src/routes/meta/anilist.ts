@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { Anilist, type Seasons, type IMetaFormat } from 'kenjitsu-extensions';
 import {
@@ -10,7 +11,8 @@ import {
 import { redisSetCache, redisGetCache } from '../../middleware/cache.js';
 import { isValidDate } from '../../utils/utils.js';
 
-const anilist = new Anilist();
+const animepaheUrl = process.env.ANIMEPAHEURL || 'https://animepahe.pw';
+const anilist = new Anilist(undefined, { animepahe: animepaheUrl });
 
 export default async function AnilistRoutes(fastify: FastifyInstance) {
   fastify.get('/anime/search', async (request: FastifyRequest<{ Querystring: FastifyQuery }>, reply: FastifyReply) => {
